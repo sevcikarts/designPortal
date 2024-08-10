@@ -19,7 +19,7 @@ export default async function Home() {
     },
   })
 
-  const home = docs?.[0] as Page
+  const home = docs?.[0]
   if (!home) {
     return notFound()
   }
