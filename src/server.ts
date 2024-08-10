@@ -29,7 +29,7 @@ const start = async (): Promise<void> => {
   if (process.env.NEXT_BUILD) {
     app.listen(PORT, async () => {
       payload.logger.info(`Next.js is now building...`)
-      // @ts-ignore
+      // @ts-expect-error
       await nextBuild(path.join(__dirname, '..'))
       process.exit()
     })
