@@ -1,16 +1,23 @@
 {
-  "version": 2,
-  "builds": [
-    { "src": "next.config.js", "use": "@vercel/next" }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/[...payload]"
+    "build": {
+      "env": {
+        "NODE_ENV": "production"
+      }
     },
-    {
-      "src": "/(.*)",
-      "dest": "/"
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "/index.html"
+      }
+    ],
+    "builds": [
+      {
+        "src": "package.json",
+        "use": "@vercel/node"
+      }
+    ],
+    "scripts": {
+      "build": "yarn build",
+      "start": "yarn serve"
     }
-  ]
-}
+  }
