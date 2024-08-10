@@ -2,7 +2,6 @@ import React, { Fragment } from 'react'
 import { notFound } from 'next/navigation'
 
 import { getPayloadClient } from '../getPayload'
-import { Page } from './../payload-types'
 import { Gutter } from './_components/Gutter'
 import { RichText } from './_components/RichText'
 
