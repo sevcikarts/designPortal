@@ -9,10 +9,11 @@ import { seed as seedData } from './seed'
 dotenv.config({
   path: path.resolve(__dirname, '../.env'),
 })
-let cached = (global as any).payload
+
+let cached = (global as any).payload // eslint-disable-line @typescript-eslint/no-explicit-any
 
 if (!cached) {
-  cached = (global as any).payload = { client: null, promise: null }
+  cached = (global as any).payload = { client: null, promise: null } // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 interface Args {
