@@ -1,13 +1,16 @@
 import dotenv from 'dotenv'
-import express from 'express'
 import next from 'next'
+// eslint-disable-next-line import/default
+import nextBuild from 'next/dist/build'
 import path from 'path'
-
-import { getPayloadClient } from './getPayload'
 
 dotenv.config({
   path: path.resolve(__dirname, '../.env'),
 })
+
+import express from 'express'
+
+import { getPayloadClient } from './getPayload'
 
 const app = express()
 const PORT = process.env.PORT || 3000
@@ -23,7 +26,7 @@ const start = async (): Promise<void> => {
     seed: process.env.PAYLOAD_PUBLIC_SEED === 'true',
   })
 
-  if (process.env.NODE_ENV === 'production') {
+  if (process.env.NEXT_BUILD) {
     app.listen(PORT, async () => {
       payload.logger.info(`Next.js is now building...`)
       // @ts-ignore
@@ -35,7 +38,6 @@ const start = async (): Promise<void> => {
   }
 
   const nextApp = next({
-    // @ts-ignore
     dev: process.env.NODE_ENV !== 'production',
   })
 
